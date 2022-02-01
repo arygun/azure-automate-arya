@@ -41,7 +41,7 @@ foreach ($card in $cards) {
 # Skrive ut kortstokk
 $kortstokk = @()
 foreach ($card in $cards) {
-    $kortstokk += ($card.value + $card.value) + ","
+    $kortstokk += ($card.suit[0] + $card.value)
 
 }
 Write-host "Kortstokk : $kortstokk"
