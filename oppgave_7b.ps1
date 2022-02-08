@@ -56,6 +56,37 @@ Write-Output "Poengsum: $(sumPoengKortstokk -kortstokk $kortstokk)"
 $meg = $kortstokk[0..1]
 $kortstokk = $kortstokk[2..$kortstokk.Count]
 
+$magnus = $kortstokk[0..1]
+$kortstokk = $kortstokk[2..$kortstokk.Count]
+
 Write-Output "meg: $(kortStokktilString -kortstokk $meg)"
+Write-Output "meg poengsum: $(sumPoengKortstokk -kortstokk $meg)"
 Write-Output "magnus: $(kortStokktilString -kortstokk $magnus)"
+Write-Output "magnus poengsum: $(sumPoengKortstokk -kortstokk $magnus)"
 Write-Output "kortstokk: $(kortStokktilString -kortstokk $kortstokk)"
+
+function skrivUtResultat {
+    param (
+        [string]
+        $vinner,        
+        [object[]]
+        $kortStokkMagnus,
+        [object[]]
+        $kortStokkMeg        
+    )
+    Write-Output "Vinner: $vinner"
+    Write-Output "magnus | $(sumPoengKortstokk -kortstokk $kortStokkMagnus) | $(kortStokktilString -kortstokk $kortStokkMagnus)"    
+    Write-Output "meg    | $(sumPoengKortstokk -kortstokk $kortStokkMeg) | $(kortStokktilString -kortstokk $kortStokkMeg)"
+}
+
+# bruker 'blackjack' som et begrep - er 21
+$blackjack = 21
+
+if ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) {
+    skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    exit
+}
+elseif ((sumPoengKortstokk -kortstokk $magnus) -eq $blackjack) {
+    skrivUtResultat -vinner "magnus" -kortStokkMagnus $magnus -kortStokkMeg $meg
+    exit
+}
