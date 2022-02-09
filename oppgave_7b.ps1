@@ -16,7 +16,7 @@ $kortstokkJson = $webRequest.Content
 
 $kortstokk = ConvertFrom-Json -InputObject $kortstokkJson
 
-
+# Lager en string av hele kortstokken og legger dem i en array
 function kortStokktilString {
     [OutputType([string])] 
     param (
@@ -30,7 +30,7 @@ function kortStokktilString {
      return $streng
 }
 
-
+# Regne ut poengsummen
 function sumPoengKortstokk {
     [OutputType([int])]
     param (
@@ -81,6 +81,7 @@ function skrivUtResultat {
 
 # bruker 'blackjack' som et begrep - er 21
 $blackjack = 21
+
 
 if ((sumPoengKortstokk -kortstokk $meg) -eq $blackjack) {
     skrivUtResultat -vinner "meg" -kortStokkMagnus $magnus -kortStokkMeg $meg
