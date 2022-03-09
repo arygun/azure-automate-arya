@@ -1,13 +1,12 @@
-name: oppgave 16 
+name: oppgave 16
 
 on:
   push:
-      branches:
+    branches:
       - main
-      paths:
+    paths:
       - .github/workflows/oppgave_16.yml
   workflow_dispatch:
-    
 
 jobs:
   job1:
@@ -20,13 +19,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: login to Azure
+      - name: Run Blackjack script file
+        run: ./oppgave_10.ps1
+
+      - name: login via Azure module
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIANLS }}
           enable-AzPSSession: true
- 
-
-      - name: Run Blackjack script file
-        run: ./oppgave_10.ps1  
-        

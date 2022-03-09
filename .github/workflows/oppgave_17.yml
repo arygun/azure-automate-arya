@@ -2,9 +2,9 @@ name: oppgave 17
 
 on:
   push:
-      branches:
+    branches:
       - main
-      paths:
+    paths:
       - .github/workflows/oppgave_17.yml
       - funcApp/**
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
       - name: login to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ Secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
  
       - name: Install and cache PowerShell modules
