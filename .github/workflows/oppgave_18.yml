@@ -1,9 +1,8 @@
 name: oppgave 18
 
 on:
-
   workflow_dispatch:
-    
+  
 
 jobs:
   job1:
@@ -22,15 +21,11 @@ jobs:
           creds: ${{ Secrets.AZURE_CREDENTIANLS_NY }}
           enable-AzPSSession: true
  
-      - name: Install and cache PowerShell modules
-        uses: potatoqualitee/psmodulecache@v4
-        with:
-          modules-to-cache: Az.Storage, Az.Functions, Az.Websites, Az.Resources, Az.Accounts
 
       - name: 'Run cleanup script'
         uses: azure/powershell@v1
         with:
-          inlineScript: ./funcApp/cleanup.ps1
+          inlineScript: ./funcApp/cleanup.ps1 -resourceGroupName 'Arya-workshop-cujoqa3zigcrg'
           azPSVersion: "latest"
 
       - name: 'logout from azure'
