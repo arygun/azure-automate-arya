@@ -5,7 +5,8 @@ on:
       branches:
       - main
       paths:
-      - .github/workflows/oppgave_16.yml
+      - .github/workflows/oppgave_17.yml
+      - funcApp/**
   workflow_dispatch:
     
 
@@ -26,7 +27,14 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
  
+      - name: Install and cache PowerShell modules
+        uses: potatoqualitee/psmodulecache@v4
+        with:
+          modules-to-cache: Az.Storage, Az.Functions, Az.Websites, Az.Resources, Az.Accounts
 
+     
+      
+      
       - name: Run Blackjack script file
         run: ./oppgave_10.ps1  
         
