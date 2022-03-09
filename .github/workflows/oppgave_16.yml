@@ -25,5 +25,5 @@ jobs:
       - name: login via Azure module
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIANLS }}
+          creds: ${{ secrets.AZURE_CREDENTIANLS_NY }}
           enable-AzPSSession: true

@@ -19,7 +19,7 @@ jobs:
       - name: login to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ Secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
  
       - name: Install and cache PowerShell modules
